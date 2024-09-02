@@ -1,0 +1,161 @@
+1. Statik Shortcut tanımlarken yaptıklarımız
+
+1.1 manifest.xml'deki metadata etiketi
+<meta-data android:resource="@xml/shortcuts" android:name="android.app.shortcuts"/>
+<meta-data> etiketi, Android uygulamanızın AndroidManifest.xml dosyasında kullanılan bir yapılandırma öğesidir.
+Bu etiket, uygulamanın çalışma zamanında belirli özellikleri ve bilgileri belirli kaynak dosyalarından almasına olanak tanır.
+Statik App Shortcuts tanımlamak için kullanılan bu meta-data etiketi, kısayol bilgilerinin bulunduğu bir XML dosyasına referans verir.
+
+Bu meta-data etiketi iki önemli özelliğe sahiptir:
+android:resource: Bu özellik, uygulamanın kısayol bilgilerini içerdiği XML dosyasına referans verir. Burada @xml/shortcuts ifadesi, res/xml/shortcuts.xml
+dosyasına işaret eder. Bu XML dosyası, statik kısayolları tanımladığınız yerdir.
+android:name: Bu özellik, meta-verinin adını belirtir. Burada android.app.shortcuts olarak belirtilmiştir. Android sistemi, bu adı kullanarak
+uygulamanın statik kısayolları içerip içermediğini ve kısayol yapılandırmasını nereden alacağını anlar.
+
+1.2 shortcuts.xml dosyası
+
+<shortcuts> Root Elemanı
+Bu, kısayolların tanımlandığı kök elementtir. Bu elementin içinde bir veya birden fazla <shortcut> öğesi bulunur. Her <shortcut> öğesi, uygulamanızın
+ana ekranında görünecek bir statik kısayolu temsil eder.
+
+<shortcut> Elemanı
+Bu öğe, tek bir statik kısayolu tanımlar ve çeşitli özellikler içerir:
+
+android:shortcutId="static":
+Açıklama: Kısayola özgü bir kimlik belirler. Bu ID, kısayolu programatik olarak yönetmek (örneğin, güncellemek veya kaldırmak) için kullanılır.
+Önemi: Uygulama içinde bu kısayola referans vermek için bu ID kullanılır.
+
+android:enabled="true":
+Açıklama: Bu kısayolun etkin olup olmadığını belirler. true olarak ayarlandığında, kısayol kullanıcıya sunulur.
+Önemi: Kısayolu etkinleştirir. false olarak ayarlandığında kısayol devre dışı bırakılır.
+
+android:icon="@drawable/baseline_alarm_24":
+Açıklama: Kısayol için gösterilecek ikonu belirler. Burada, @drawable/baseline_alarm_24 kaynağına işaret eder.
+Önemi: Kısayolun ana ekranda görünecek olan ikonunu belirler. Kullanıcı arayüzü açısından önemlidir.
+
+android:shortcutShortLabel="@string/short_label":
+Açıklama: Kısayolun kısa etiketini tanımlar. Bu, kısayol simgesinin altında görünecek olan kısa metindir.
+Önemi: Kısayolun kısa tanımlayıcı metni olarak kullanılır. Kullanıcılar bu etiketi kısayol simgesinin altında görürler.
+
+android:shortcutLongLabel="@string/long_label":
+Açıklama: Kısayolun uzun etiketini tanımlar. Bu, genellikle kısayolun üzerine uzun süre basıldığında gösterilen daha uzun bir açıklama metnidir.
+Önemi: Kullanıcıya daha fazla bilgi vermek için kullanılır. Özellikle erişilebilirlik açısından faydalıdır.
+
+android:shortcutDisabledMessage="@string/disabled_message":
+Açıklama: Kısayol devre dışı bırakıldığında kullanıcıya gösterilecek mesajı belirler.
+Önemi: Kısayolun devre dışı olduğu durumlarda kullanıcıya bilgilendirici bir mesaj göstermek için kullanılır.
+
+<intent> Elemanı
+Bu öğe, kısayol çalıştırıldığında tetiklenecek Intent'i tanımlar:
+
+android:action="android.intent.action.VIEW":
+Açıklama: Bu, kısayol çalıştırıldığında hangi Intent eyleminin gerçekleştirilmesi gerektiğini belirtir. android.intent.action.VIEW genellikle belirli
+bir URI'yi veya içeriği görüntülemek için kullanılır.
+Önemi: Bu kısayolun ne yapacağını belirler. Genellikle, belirli bir aktiviteyi başlatmak için kullanılır.
+
+android:targetPackage="com.abdulkadirkara.appshortcuts":
+Açıklama: Bu, Intent'in hangi uygulama paketini hedefleyeceğini belirtir. Burada, kısayolun hedefi olarak kendi uygulamanızın paket adı belirtilmiştir.
+Önemi: Intent'in hangi uygulamayı başlatacağını belirler. Bu, kısayolun doğru uygulamada çalışmasını sağlar.
+
+android:targetClass="com.abdulkadirkara.appshortcuts.MainActivity":
+Açıklama: Bu, kısayol çalıştırıldığında hangi sınıfın (aktivitenin) başlatılacağını belirtir. Burada MainActivity hedeflenmiştir.
+Önemi: Kısayol çalıştırıldığında hangi ekranın açılacağını belirler. Bu, kullanıcının doğrudan belirli bir aktiviteye yönlendirilmesini sağlar.
+
+<extra> Elemanı
+Bu öğe, Intent ile ek veri göndermek için kullanılır:
+
+android:name="shortcut_id":
+Açıklama: Bu, ek verinin anahtar adını belirtir. Burada "shortcut_id" anahtarı kullanılmıştır.
+Önemi: Intent aracılığıyla belirli bir veri göndermek için kullanılır. Bu, kısayolun nasıl çalıştığını veya neyi hedeflediğini belirtmek için kullanılabilir.
+
+android:value="static":
+Açıklama: Bu, yukarıda belirtilen anahtar adı için gönderilecek değeri belirler. Burada "static" değeri kullanılmıştır.
+Önemi: Intent ile birlikte gönderilecek olan değeri belirler. Bu veri, hedef aktiviteye ulaştığında kullanılabilir.
+
+Özet
+Bu XML dosyası, bir statik kısayolun nasıl tanımlandığını gösterir. Kısayol, belirli bir ikona, kısa ve uzun bir etikete, devre dışı mesajına, ve başlatılacak olan
+bir aktiviteye sahiptir. meta-data etiketi aracılığıyla AndroidManifest.xml dosyasına bağlanarak Android sistemi tarafından uygulamanızın kısayolları olarak
+kaydedilir. Kısayol çalıştırıldığında belirtilen Intent ile belirli bir aktivite başlatılır ve isteğe bağlı olarak ek veri gönderilir.
+------------------------------------------------------------------
+2. Dinamik Shortcut tanımlarken yaptıklarımız
+main activity'deki addDynamicShorcut() methodu ile
+
+2.1 ShortcutInfoCompat.Builder Oluşturulması:
+Dinamik kısayol bilgilerini yapılandırmak için bir ShortcutInfoCompat.Builder nesnesi oluşturur.
+val shortcut = ShortcutInfoCompat.Builder(this, "id")
+
+2.2 Kısayol Etiketleri:
+setShortLabel: Kısayolun kısa etiketini belirler. Bu etiket, kısayolun kullanıcıya gösterilen kısa adıdır.
+setLongLabel: Kısayolun uzun etiketini belirler. Bu, kısayol hakkında daha fazla bilgi sağlayan daha uzun bir açıklamadır.
+
+2.3 Kısayol Simge İkonu:
+setIcon: Kısayol için bir simge belirler. IconCompat.createWithResource kullanılarak kaynak dosyasından bir ikon oluşturulur.
+
+2.4 Kısayol İçin Intent Oluşturulması:
+setIntent: Kısayola tıklandığında hangi Intent'in başlatılacağını belirtir. Bu Intent, kısayola tıklandığında uygulamanın hangi
+bileşeninin açılacağını tanımlar.
+Intent(this, MainActivity::class.java): Intent oluşturulur ve MainActivity'yi başlatmak için kullanılır. this bağlamı ile aktiviteye
+bağlanır.
+apply Bloğu: Intent'e ek ayarları uygulamak için kullanılır.
+action = Intent.ACTION_VIEW: Intent'in eylemi, ACTION_VIEW olarak ayarlanır. Bu, genellikle bir veriyi veya içeriği görüntülemek için
+kullanılır.
+putExtra("shortcut_id", "dynamic"): Intent'e ekstra veri ekler. Bu durumda, "shortcut_id" adında bir ek veri ve "dynamic" değeri eklenir.
+Bu veri, kısayolun türünü belirlemek için kullanılır.
+
+2.5 Kısayolu Dinamik Olarak Ekleme:
+.build()
+Yapılandırılan ShortcutInfoCompat nesnesini oluşturur. Bu adım, yapılandırmayı tamamlar ve ShortcutInfoCompat nesnesini üretir.
+
+2.6 Kısayolu Yöneticiye Gönderme:
+ShortcutManagerCompat.pushDynamicShortcut(this, shortcut)
+Dinamik kısayolu sistemin kısayol yöneticisine ekler.
+ShortcutManagerCompat.pushDynamicShortcut: ShortcutManagerCompat sınıfının bir yöntemidir ve dinamik bir kısayolu ekler.
+-------------------------------------------------
+3 Pinned Shortcut tanımlarken yaptıklarımız
+main activity'deki addPinnedShortcut() methodu ile
+
+3.1 Android Sürüm Kontrolü:
+Pinned kısayollar Android 8.0 (API seviyesi 26) ve sonrasında desteklenir.
+Bu kontrol, cihazın sürümünü kontrol eder ve Android 8.0'dan (Oreo)  önceyse fonksiyonu erken terk eder.
+
+3.2 ShortcutManager Alımı:
+ShortcutManager sistem servisini alır. Bu sınıf, kısayolları yönetmek için kullanılır.
+getSystemService: Context sınıfının bir yöntemidir ve belirli bir sistem hizmetini alır.
+!!: null değer dönerse bir NullPointerException atar. Bu, ShortcutManager'ın null olmayacağını varsayar.
+
+3.3 Kısayol Sabitleme Desteği Kontrolü:
+if(shortcutManager.isRequestPinShortcutSupported) {
+Cihazın pinned (sabitleme) kısayollarını destekleyip desteklemediğini kontrol eder.
+Bu, kullanıcının ana ekrana kısayol ekleyip ekleyemeyeceğini belirler.
+
+3.4 Kısayol Bilgilerini Oluşturma:
+Kısayolun tüm özelliklerini belirler ve ShortcutInfo nesnesini oluşturur.
+ShortcutInfo.Builder: ShortcutInfo nesnesi oluşturmak için bir yapılandırıcıdır.
+"pinned": Kısayolun benzersiz kimliğidir. Bu kimlik, kısayolu tanımlamak için kullanılır.
+setShortLabel: Kısayolun kısa etiketidir. Kullanıcıya gösterilen kısa ad.
+setLongLabel: Kısayolun uzun etiketidir. Kısayol hakkında daha ayrıntılı bilgi sağlar.
+setIcon: Kısayol için bir simge belirler. Icon.createWithResource kullanılarak drawable kaynağından bir ikon oluşturulur.
+setIntent: Kısayola tıklandığında hangi Intent'in başlatılacağını belirtir. Intent belirli bir Activity'yi başlatır ve ek veri içerir.
+apply Bloğu: Intent'e ekstra ayarları ekler.
+action = Intent.ACTION_VIEW: Intent'in eylemi, veriyi veya içeriği görüntülemek için ayarlanır.
+putExtra("shortcut_id", "pinned"): Intent'e ekstra veri ekler. Bu durumda, "shortcut_id" adında bir veri ve "pinned" değeri eklenir.
+
+3.5 Sonuç Intent'i Oluşturma:
+Kısayolun kullanıcı tarafından başarıyla sabitlendiğine dair bir sonuç Intent'i oluşturur.
+Bu Intent, kısayolun eklenip eklenmediğini bildirmek için kullanılır.
+
+3.6 PendingIntent Oluşturma:
+Kısayolun başarıyla eklenmesi durumunda tetiklenecek olan PendingIntent oluşturur.
+PendingIntent.getBroadcast: Bir PendingIntent oluşturur. Bu PendingIntent, bir Broadcast gönderir.
+PendingIntent.FLAG_IMMUTABLE: PendingIntent'in değiştirilemez olduğunu belirtir.
+
+3.7 Kısayolu Sabitleme Talebi:
+Kısayolu kullanıcının ana ekranına (veya uygulama çekmecesine) sabitlemek için bir talep gönderir.
+requestPinShortcut: ShortcutManager sınıfının bir yöntemidir ve shortcut'ı ana ekrana sabitler.
+successPendingIntent.intentSender: PendingIntent'in IntentSender'ıdır.
+Bu, kısayolun başarıyla eklenip eklenmediğini bildirmek için kullanılır.
+
+*onNewIntent metodu,
+bir Activity daha önce başlatılmışsa ve yeni bir Intent ile çağrıldığında tetiklenir.
+Bu durumda Activity, mevcut örneğine yeni bir Intent ile güncellenir.
+Bu metod, Activity zaten ekranın önündeyse, yeni Intent'in nasıl işleneceğini belirler.
