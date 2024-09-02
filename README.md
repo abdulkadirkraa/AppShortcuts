@@ -40,6 +40,7 @@ To define a static shortcut, you need to do two things:
     </shortcut>
 </shortcuts>
 ```
+
 2. **Configure the manifest**: Add the shortcut metadata in your `AndroidManifest.xml` file.
 
     ```xml
@@ -71,6 +72,7 @@ private fun addDynamicShortCut(){
 
     }
     ```
+
 This function creates a dynamic shortcut with the following steps:
 
 1. ShortcutInfoCompat.Builder is used to build the shortcut.
@@ -81,6 +83,7 @@ This function creates a dynamic shortcut with the following steps:
 
 ## Pinned Shortcut
 Pinned shortcuts are similar to dynamic shortcuts, but they are pinned to the user's home screen and require user confirmation. Here's how to create a pinned shortcut:
+
 ```kotlin
 private fun addPinnedShortcut() {
         if(Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
@@ -115,6 +118,7 @@ private fun addPinnedShortcut() {
         }
     }
 ```
+
 This function does the following:
 
 Checks if the API level supports pinned shortcuts.
