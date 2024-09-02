@@ -2,11 +2,9 @@
 
 This project demonstrates how to implement App Shortcuts in an Android application. App Shortcuts allow users to quickly start specific actions in your app, providing a more efficient user experience.
 
-| GIF | Açıklama |
-| --- | -------- |
-| ![static](https://github.com/user-attachments/assets/86a9e520-4fe6-4dea-a101-bdade8588074) | Bu GIF, bir statik shortcut'ın nasıl oluşturulacağını gösterir. |
-| ![dynamic](https://github.com/user-attachments/assets/974e7bf9-07fa-486f-8c62-411a5842a47d) | Bu GIF, dinamik bir shortcut'ın nasıl oluşturulacağını gösterir. |
-| ![pinned](https://github.com/user-attachments/assets/c0eefa3f-9d69-4b8b-854d-14ba95578d76) | Bu GIF, pinned shortcut'ın nasıl oluşturulacağını gösterir. |
+| Static | Dynamic | Pinned |
+| ------ | ------- | ------ |
+| ![static](https://github.com/user-attachments/assets/86a9e520-4fe6-4dea-a101-bdade8588074) | ![dynamic](https://github.com/user-attachments/assets/974e7bf9-07fa-486f-8c62-411a5842a47d) | ![pinned](https://github.com/user-attachments/assets/c0eefa3f-9d69-4b8b-854d-14ba95578d76) |
 
 ## What are App Shortcuts?
 
