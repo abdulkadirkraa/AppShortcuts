@@ -2,6 +2,12 @@
 
 This project demonstrates how to implement App Shortcuts in an Android application. App Shortcuts allow users to quickly start specific actions in your app, providing a more efficient user experience.
 
+| GIF | Açıklama |
+| --- | -------- |
+| ![static](https://github.com/user-attachments/assets/86a9e520-4fe6-4dea-a101-bdade8588074) | Bu GIF, bir statik shortcut'ın nasıl oluşturulacağını gösterir. |
+| ![dynamic](https://github.com/user-attachments/assets/974e7bf9-07fa-486f-8c62-411a5842a47d) | Bu GIF, dinamik bir shortcut'ın nasıl oluşturulacağını gösterir. |
+| ![pinned](https://github.com/user-attachments/assets/c0eefa3f-9d69-4b8b-854d-14ba95578d76) | Bu GIF, pinned shortcut'ın nasıl oluşturulacağını gösterir. |
+
 ## What are App Shortcuts?
 
 App Shortcuts are a feature in Android that allow you to define specific actions or destinations within your app that users can access directly from their home screen or launcher. There are three types of App Shortcuts:
@@ -44,8 +50,7 @@ To define a static shortcut, you need to do two things:
         android:name="android.app.shortcuts"
         android:resource="@xml/shortcuts" />
 </application>
-
-![static](https://github.com/user-attachments/assets/86a9e520-4fe6-4dea-a101-bdade8588074)
+```
 
 ## Dynamic Shortcut
 
@@ -75,8 +80,6 @@ This function creates a dynamic shortcut with the following steps:
 3. setIcon sets the icon for the shortcut.
 4. setIntent defines the action and the target activity for the shortcut.
 5. Finally, ShortcutManagerCompat.pushDynamicShortcut is called to add the shortcut.
-
-![dynamic](https://github.com/user-attachments/assets/974e7bf9-07fa-486f-8c62-411a5842a47d)
 
 ## Pinned Shortcut
 Pinned shortcuts are similar to dynamic shortcuts, but they are pinned to the user's home screen and require user confirmation. Here's how to create a pinned shortcut:
@@ -119,5 +122,3 @@ This function does the following:
 Checks if the API level supports pinned shortcuts.
 Creates a ShortcutInfo object with details such as labels, icon, and intent.
 Uses ShortcutManager.requestPinShortcut to request pinning the shortcut to the home screen. A PendingIntent is used to handle the result of the request.
-
-![pinned](https://github.com/user-attachments/assets/c0eefa3f-9d69-4b8b-854d-14ba95578d76)
