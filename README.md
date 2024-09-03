@@ -1,10 +1,3 @@
-| **Kavram**   | **Amaç**                                                                                       | **Tür**                                               |
-|--------------|------------------------------------------------------------------------------------------------|-------------------------------------------------------|
-| **Host**     | Mevcut navigation destination'ı içeren bir UI öğesidir. Yani, bir kullanıcı bir uygulamada gezindiğinde, uygulama navigation host'un içinde destination'ları değiştirir. | Compose: `NavHost`, Fragments: `NavHostFragment`      |
-| **Graph**    | Uygulama içerisindeki tüm navigation destination'larını ve bunların nasıl birbirine bağlandığını tanımlayan bir veri yapısıdır. | `NavGraph`                                            |
-| **Controller** | Destination'lar arasında navigasyonu yönetmek için merkezi bir koordinatördür. Controller, destination'lar arasında gezinme, deep link'leri yönetme, back stack'i yönetme gibi işlemler için yöntemler sunar. | `NavController`                                      |
-| **Destination** | Navigation graph'taki bir düğümdür. Kullanıcı bu düğüme navigasyon yaptığında, host içeriğini gösterir. | `NavDestination` (Genellikle navigation graph oluşturulurken oluşturulur.) |
-| **Route**    | Bir destination'ı ve ona ihtiyaç duyulan verileri benzersiz bir şekilde tanımlar. Route'lar kullanarak navigasyon yapabilirsiniz. Route'lar sizi destination'lara götürür. | Herhangi bir serileştirilebilir veri türü.             |
 
 # App Shortcuts
 
